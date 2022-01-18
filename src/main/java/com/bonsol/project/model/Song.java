@@ -2,6 +2,8 @@ package com.bonsol.project.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,12 +32,16 @@ public class Song {
 	@ManyToOne
 	@JoinColumn(name = "album_id", referencedColumnName = "id")
 	private Album album;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private Genre genre;
 
 	public Song() {
-		this (-1, "Untitled", new Artist(), new Album());
+		this (-1, "Untitled", new Artist(), new Album(), Genre.POP);
 	}
 	
-	public Song(Integer id, String title, Artist artist, Album album) {
+	public Song(Integer id, String title, Artist artist, Album album, Genre genre) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -75,6 +81,14 @@ public class Song {
 		this.album = album;
 	}
 
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
 	@Override
 	public String toString() {
 		return "Song [id=" + id + ", title=" + title + ", artist=" + artist + ", album=" + album + "]";
@@ -84,7 +98,8 @@ public class Song {
 		return  "{\"id\" : " + id + 
 				", \"title\" : \"" + title + "\"" + 
 				", \"artist\" : \"" + artist + "\"" + 
-				", \"album\" : \"" + album + "}";	
+				", \"album\" : \"" + album +
+				", \"genre\" : \"" + genre + "}";
 	}
 
 }

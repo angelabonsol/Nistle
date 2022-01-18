@@ -19,4 +19,15 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<?> resourceNotFound(ResourceNotFoundException ex, WebRequest request){
+		
+		String path = request.getDescription(false).substring(4);
+
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), path);
+		
+		return new ResponseEntity<>(errorDetails,HttpStatus.NOT_FOUND);		
+		
+	}
+	
 }
