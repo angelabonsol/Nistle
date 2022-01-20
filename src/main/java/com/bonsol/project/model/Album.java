@@ -25,7 +25,7 @@ public class Album {
 	@Column(nullable = false)
 	private Artist artist;
 	
-	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "Song", cascade = CascadeType.ALL)
 	private List<Song> songs;
 
 	public Album() {

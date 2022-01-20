@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.bonsol.project.model.Artist;
+//import com.bonsol.project.model.Artist;
 import com.bonsol.project.model.Song;
 import com.bonsol.project.model.Song.Genre;
 
@@ -17,7 +17,7 @@ public interface SongRepository extends JpaRepository<Song, Integer>{
 	List<Song> findAllSongsInOrder();
 	
 	@Query(value= "SELECT * FROM nistle.song WHERE artist = ?1;")
-	List<Song> findAllSongsByArtist(Artist artist);
+	List<Song> findAllSongsByArtist(String artist);
 	
 	@Query(value= "SELECT * FROM nistle.song WHERE title = ?1;")
 	List<Song> findAllSongsByTitle(String title);

@@ -26,11 +26,11 @@ public class Song {
 	private String title;
 
 	@ManyToOne
-	@JoinColumn(name = "artist_id", referencedColumnName = "id")
+	@JoinColumn(name = "artist_id", referencedColumnName = "artist_id")
 	private Artist artist;
 	
 	@ManyToOne
-	@JoinColumn(name = "album_id", referencedColumnName = "id")
+	@JoinColumn(name = "album_id", referencedColumnName = "album_id")
 	private Album album;
 	
 	@Enumerated(EnumType.STRING)

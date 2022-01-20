@@ -22,10 +22,10 @@ public class Artist {
 	@Column(nullable = false)
 	private String name;
 	
-	@OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "Album", cascade = CascadeType.ALL)
 	private List<Album> albums; 
 	
-	@OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "Song", cascade = CascadeType.ALL)
 	private List<Song> songs;
 
 	public Artist() {
@@ -81,7 +81,7 @@ public class Artist {
 		return  "{\"id\" : " + id + 
 				", \"name\" : \"" + name + "\"" + 
 				", \"albums\" : \"" + albums + "\"" + 
-				", \"songs\" : \"" +songs + "}";	
+				", \"songs\" : \"" + songs + "}";	
 	}
 	
 }

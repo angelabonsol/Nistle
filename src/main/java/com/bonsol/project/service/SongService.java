@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bonsol.project.model.Artist;
+//import com.bonsol.project.model.Artist;
 import com.bonsol.project.model.Song;
 import com.bonsol.project.model.Song.Genre;
 import com.bonsol.project.repository.ArtistRepository;
@@ -44,20 +44,20 @@ public class SongService {
 		return found.get();
 	}
 	
-	//double check 
+	//*****double check 
 	//CHECK: ***** Find Songs by Artist ***** 
-//	public List<Song> findSongsByArtist(String artist) throws ResourceNotFoundException{
-//		
-//		//search all artists and get songs
-//		
-//		List<Song> results = repo.findAllSongsByArtist(artist);
-//		
-//		if(results.isEmpty())
-//			throw new ResourceNotFoundException("Song");
-//		else 
-//			return results;
-//		
-//	}
+	public List<Song> findSongsByArtist(String artist) throws ResourceNotFoundException{
+		
+		//search all artists and get songs
+		
+		List<Song> results = repo.findAllSongsByArtist(artist);
+		
+		if(results.isEmpty())
+			throw new ResourceNotFoundException("Song");
+		else 
+			return results;
+		
+	}
 	
 	
 	//CHECK: ***** Find Song by Title *****

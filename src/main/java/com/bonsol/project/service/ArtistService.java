@@ -20,10 +20,13 @@ public class ArtistService {
 	public List<Artist> findAllArtists(){
 		return repo.findAll();
 	}
-	//TODO: ***** Find All Artists in Alphabetical ***** ??? 
 	
+	//CHECK: ***** Find All Artists in Alphabetical ***** 
+	public List<Artist> findAllArtistsAlphabetical(){
+		return repo.findAllArtistsInOrder();
+	}
 	
-	//TODO: ***** Find Artist by ID *****
+	//CHECK: ***** Find Artist by ID *****
 	public Artist findArtistById(Integer id) throws ResourceNotFoundException{
 		
 		Optional<Artist> found = repo.findById(id);
@@ -35,10 +38,27 @@ public class ArtistService {
 		return found.get();
 	}
 	
-	//TODO: ***** Find Artists by Name *****
-	
-	//TODO: ***** Find Artists by Keyword ***** (Check Group Final Project- Restaurant)
+	//CHECK: ***** Find Artists by Name *****
+	public List<Artist> findArtistsByName(String name) throws ResourceNotFoundException{
+		List<Artist> results = repo.findAllArtistsByName(name);
 		
+		if(results.isEmpty())
+			throw new ResourceNotFoundException("Song");
+		else 
+			return results;
+	}
+	
+	//CHECK: ***** Find Artists by Keyword ***** 
+	public List<Artist> findArtistsByKeyword(String keyword) throws ResourceNotFoundException{
+		List<Artist> results = repo.findAllArtistsByKeyword(keyword);
+		
+		if(results.isEmpty())
+			throw new ResourceNotFoundException("Song");
+		else 
+			return results;
+		
+	}
+	
 	//CHECK: ***** Create Artist *****
 	public Artist createArtist(Artist artist) {
 		artist.setId(-1);

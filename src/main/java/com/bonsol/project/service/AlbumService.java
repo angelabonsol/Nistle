@@ -21,8 +21,10 @@ public class AlbumService {
 		return repo.findAll();
 	}
 	
-	//TODO: ***** Find All Albums in Chronological Order ***** ??? 
-	
+	//CHECK: ***** Find All Albums in Chronological Order *****
+	public List<Album> findAllAlbumsAlphabetical(){
+		return repo.findAllAlbumsInOrder();
+	}
 	
 	//CHECK: ***** Find Album by ID *****
 	public Album findAlbumById(Integer id) throws ResourceNotFoundException{
@@ -36,12 +38,38 @@ public class AlbumService {
 		return found.get();
 	}
 	
-	//TODO: ***** Find Albums by Title *****
+	//CHECK: ***** Find Albums by Title *****
+	public List<Album> findAlbumsByTitle(String title) throws ResourceNotFoundException{
+		List<Album> results = repo.findAllAlbumsByTitle(title);
+		
+		if(results.isEmpty())
+			throw new ResourceNotFoundException("Album");
+		else 
+			return results;
+	}
 	
-	//TODO: ***** Find Albums by Artist *****
-
-	//TODO: ***** Find Albums by Keyword ***** (Check Group Final Project- Restaurant)
-
+	//CHECK: ***** Find Albums by Artist *****
+	public List<Album> findAlbumsByArtist(String artist) throws ResourceNotFoundException{
+		
+	List<Album> results = repo.findAllAlbumsByArtist(artist);
+	
+	if(results.isEmpty())
+		throw new ResourceNotFoundException("Album");
+	else 
+		return results;
+	
+}
+	
+	//CHECK: ***** Find Albums by Keyword *****
+	public List<Album> findAlbumsByKeyword(String keyword) throws ResourceNotFoundException{
+		List<Album> results = repo.findAllAlbumsByKeyword(keyword);
+		
+		if(results.isEmpty())
+			throw new ResourceNotFoundException("Album");
+		else 
+			return results;
+		
+	}
 		
 	//CHECK: ***** Create Album *****
 	public Album createAlbum(Album album) {

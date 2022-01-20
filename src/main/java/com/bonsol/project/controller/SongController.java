@@ -35,7 +35,7 @@ public class SongController {
 		return service.findAllSongs();
 	}
 	
-	//CHECK: ***** Get All Songs in Alphabetical ***** ??? 
+	//CHECK: ***** Get All Songs in Alphabetical *****
 	@GetMapping("/song/a-z")
 	public List<Song> getAllSongsInOrder(){
 		return service.findAllSongsAlphabetical();
@@ -47,12 +47,12 @@ public class SongController {
 		return service.findSongById(id);
 	}
 	
-	//double check 
+	//****double check 
 	//CHECK: ***** Get Songs by Artist ***** 
-//	@GetMapping("/songs/{artist}")
-//	public List<Song> getSongsByArtist(@PathVariable String artist) throws ResourceNotFoundException{
-//		return service.findSongsByArtist(artist);
-//	}
+	@GetMapping("/song/{artist}")
+	public List<Song> getSongsByArtist(@PathVariable String artist) throws ResourceNotFoundException{
+		return service.findSongsByArtist(artist);
+	}
 	
 	//CHECK: ***** Get Song by Title *****
 	@GetMapping("/song/{title}")

@@ -7,18 +7,20 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.bonsol.project.model.Album;
-import com.bonsol.project.model.Song;
 
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Integer>{
 	
+	@Query("SELECT * FROM nistle.album ORDER BY title")
+	List<Album> findAllAlbumsInOrder();
+	
 	@Query(value= "SELECT * FROM nistle.album WHERE title = ?1;")
-	List<Song> findAllAlbumsByTitle(String title);
+	List<Album> findAllAlbumsByTitle(String title);
 	
 	@Query(value= "SELECT * FROM nistle.album WHERE artist = ?1;")
-	List<Song> findAllAlbumsByArtist(String artist);
+	List<Album> findAllAlbumsByArtist(String artist);
 	
 	@Query(nativeQuery= true, value= "SELECT * FROM nistle.album WHERE name LIKE ?1;")
-	List<Song> findAllAlbumssByKeyword(String keyword);
+	List<Album> findAllAlbumsByKeyword(String keyword);
 
 }
